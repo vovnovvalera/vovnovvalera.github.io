@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Valery Vaunou — Projects</title>
   <meta name="description" content="Projects by Valery Vaunou." />
+
   <style>
     :root{
       --bg:#0b1220;
@@ -14,6 +15,8 @@
       --line:rgba(255,255,255,.10);
       --shadow: 0 18px 50px rgba(0,0,0,.35);
       --radius:16px;
+      --soft: rgba(255,255,255,.05);
+      --soft2: rgba(255,255,255,.08);
     }
     *{box-sizing:border-box}
     body{
@@ -26,68 +29,125 @@
         var(--bg);
       line-height:1.6;
     }
-    .wrap{max-width:900px;margin:0 auto;padding:44px 18px 60px}
-    header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-    h1{font-size:26px;margin:0;letter-spacing:.2px}
+    .wrap{max-width:920px;margin:0 auto;padding:44px 18px 60px}
+    header{
+      display:flex;align-items:baseline;justify-content:space-between;
+      gap:12px;flex-wrap:wrap;margin-bottom:18px
+    }
+    h1{font-size:28px;margin:0;letter-spacing:.2px}
     .muted{color:var(--muted);font-size:14px;margin:0}
+
     .card{
       background: rgba(17,26,46,.78);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: calc(var(--radius) + 4px);
       box-shadow: var(--shadow);
       padding: 18px;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
     }
-    ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+
+    ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+
     .item{
-      padding:14px;
-      border-radius: 14px;
+      padding:16px;
+      border-radius: 16px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: var(--soft);
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
     .item:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,.07);
+      background: var(--soft2);
       border-color: rgba(255,255,255,.16);
     }
-    .title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-    .title strong{font-size:15px}
-    a{
-      color:inherit;
-      text-decoration:none;
+
+    /* NEW: clean layout */
+    .row{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:14px 18px;
+      align-items:start;
     }
+
+    .info strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:6px;
+      letter-spacing:.1px;
+    }
+
+    .desc{
+      color:var(--muted);
+      font-size:14px;
+      margin:0;
+      max-width: 58ch;
+    }
+
+    .actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
+      min-width: 220px;
+    }
+
+    a{color:inherit;text-decoration:none}
+
     .btn{
       display:inline-flex;
       align-items:center;
-      padding: 9px 12px;
+      justify-content:center;
+      padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
       font-size: 13px;
       white-space:nowrap;
+      width: 100%;
+      transition: background .12s ease, transform .12s ease, border-color .12s ease;
     }
-    .btn:hover{background: rgba(255,255,255,.10)}
-    footer{margin-top:16px;color:var(--muted);font-size:13px}
+    .btn:hover{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.20);
+      transform: translateY(-1px);
+    }
 
-    /* Buttons one under another (only where used) */
-    .actions{
+    .meta{
+      margin-top:10px;
       display:flex;
-      flex-direction:column;
       gap:10px;
-      align-items:flex-start;
+      align-items:center;
+      flex-wrap:wrap;
     }
 
-    /* Policy link style */
     .policy{
-      display:inline-block;
-      margin-top:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       font-size:13px;
       color:var(--muted);
-      text-decoration:underline;
-      text-underline-offset:3px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      transition: background .12s ease, border-color .12s ease, color .12s ease;
     }
-    .policy:hover{color:var(--text)}
+    .policy:hover{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+      color: var(--text);
+    }
+    .policy svg{opacity:.9}
+
+    footer{margin-top:16px;color:var(--muted);font-size:13px}
+
+    /* Mobile */
+    @media (max-width: 640px){
+      .row{grid-template-columns: 1fr}
+      .actions{align-items:stretch; min-width: unset}
+      .btn{width:100%}
+      .desc{max-width: unset}
+    }
   </style>
 </head>
 
@@ -100,44 +160,63 @@
 
     <main class="card">
       <ul>
+        <!-- Extractor -->
         <li class="item">
-          <div class="title">
-            <strong>ZIP RAR Extractor & Archiver</strong>
+          <div class="row">
+            <div class="info">
+              <strong>ZIP RAR Extractor &amp; Archiver</strong>
+              <p class="desc">
+                Open ZIP, RAR and 7Z files from downloads, email and messengers easily.
+              </p>
+
+              <div class="meta">
+                <a class="policy" href="https://vovnovvalera.github.io/extractor/policy/index.html" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 3v4a2 2 0 0 0 2 2h4" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Privacy Policy
+                </a>
+              </div>
+            </div>
 
             <div class="actions">
               <a class="btn" href="https://play.google.com/store/apps/details?id=smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
                 Open on Google Play →
               </a>
               <a class="btn" href="https://www.rustore.ru/catalog/app/smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
-                Open on Rustore →
+                Open on RuStore →
               </a>
             </div>
           </div>
-
-          <p class="muted" style="margin:8px 0 0;">
-            Open ZIP, RAR and 7Z files from downloads, email and messengers easily.
-          </p>
-
-          <a class="policy" href="https://vovnovvalera.github.io/extractor/policy/index.html" target="_blank" rel="noopener">
-            Privacy Policy
-          </a>
         </li>
 
+        <!-- Jigsaw -->
         <li class="item">
-          <div class="title">
-            <strong>Jigsaw Puzzle</strong>
-            <a class="btn" href="https://play.google.com/store/apps/details?id=com.vvv.superpuzzlegame" target="_blank" rel="noopener">
-              Open on Google Play →
-            </a>
+          <div class="row">
+            <div class="info">
+              <strong>Jigsaw Puzzle</strong>
+              <p class="desc">
+                Play jigsaw puzzles offline: daily puzzle, custom photo puzzles, 36–400 pieces.
+              </p>
+
+              <div class="meta">
+                <a class="policy" href="https://vovnovvalera.github.io/jigsaw/policy/index.html" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 3v4a2 2 0 0 0 2 2h4" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Privacy Policy
+                </a>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn" href="https://play.google.com/store/apps/details?id=com.vvv.superpuzzlegame" target="_blank" rel="noopener">
+                Open on Google Play →
+              </a>
+            </div>
           </div>
-
-          <p class="muted" style="margin:8px 0 0;">
-            Play jigsaw puzzles offline: daily puzzle, custom photo puzzles, 36–400 pieces.
-          </p>
-
-          <a class="policy" href="https://vovnovvalera.github.io/jigsaw/policy/index.html" target="_blank" rel="noopener">
-            Privacy Policy
-          </a>
         </li>
       </ul>
     </main>
