@@ -69,6 +69,14 @@
     }
     .btn:hover{background: rgba(255,255,255,.10)}
     footer{margin-top:16px;color:var(--muted);font-size:13px}
+
+    /* Buttons one under another (only where used) */
+    .actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-start;
+    }
   </style>
 </head>
 
@@ -84,13 +92,17 @@
         <li class="item">
           <div class="title">
             <strong>ZIP RAR Extractor & Archiver</strong>
-            <a class="btn" href="https://play.google.com/store/apps/details?id=smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
-              Open on Google Play →
-            </a>
-            <a class="btn" href="https://www.rustore.ru/catalog/app/smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
-              Open on Rustore →
-            </a>
+
+            <div class="actions">
+              <a class="btn" href="https://play.google.com/store/apps/details?id=smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
+                Open on Google Play →
+              </a>
+              <a class="btn" href="https://www.rustore.ru/catalog/app/smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
+                Open on Rustore →
+              </a>
+            </div>
           </div>
+
           <p class="muted" style="margin:8px 0 0;">
             Open ZIP, RAR and 7Z files from downloads, email and messengers easily.
           </p>
