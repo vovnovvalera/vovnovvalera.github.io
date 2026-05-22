@@ -22,8 +22,6 @@
       -webkit-tap-highlight-color: transparent;
       user-select: none;
       -webkit-user-select: none;
-      display: flex;
-      flex-direction: column;
     }
 
     /* Balance Bar */
@@ -457,7 +455,7 @@
   </div>
 
   <!-- Game Page -->
-  <div class="game-page" id="gamePage">
+  <div class="game-page">
     <a href="index.html" class="back-btn">← BACK</a>
     <div class="slot-machine">
       <div class="win-banner" id="winBanner"></div>
@@ -491,7 +489,9 @@
   </div>
 
   <script>
-    (function() {
+    // Ждем полной загрузки DOM
+    window.addEventListener('DOMContentLoaded', function() {
+      
       // ============ COOKIE MANAGEMENT ============
       function setCookie(name, value, days = 365) {
         const expires = new Date(Date.now() + days * 864e5).toUTCString();
@@ -537,22 +537,7 @@
       document.getElementById('globalBalanceDisplay').textContent = balance;
       document.getElementById('userIdDisplay').textContent = userId;
 
-      // ============ GAME LOGIC ============
-      const symbols = ["🍒", "🍋", "🍊", "🍇", "💎", "7️⃣"];
-      const winMultipliers = {
-        "🍒": 2,
-        "🍋": 3,
-        "🍊": 4,
-        "🍇": 5,
-        "💎": 10,
-        "7️⃣": 20
-      };
-
-      let currentBet = 50;
-      let isSpinning = false;
-      const WIN_PROBABILITY = 0.25;
-      const BASE_STRIP_LENGTH = 12;
-
+      // ============ DOM ELEMENTS ============
       const reelsContainer = document.getElementById('reelsContainer');
       const reelStrips = [
         document.getElementById('reelStrip1'),
@@ -571,15 +556,31 @@
       const increaseBetBtn = document.getElementById('increaseBet');
       const betDisplay = document.getElementById('betDisplay');
 
+      // ============ GAME LOGIC ============
+      const symbols = ["🍒", "🍋", "🍊", "🍇", "💎", "7️⃣"];
+      const winMultipliers = {
+        "🍒": 2,
+        "🍋": 3,
+        "🍊": 4,
+        "🍇": 5,
+        "💎": 10,
+        "7️⃣": 20
+      };
+
+      let currentBet = 50;
+      let isSpinning = false;
+      const WIN_PROBABILITY = 0.25;
+      const BASE_STRIP_LENGTH = 12;
+
       let currentPositions, baseStrips, fullStrips, TOTAL_LENGTH;
       let symbolSize;
 
       function calculateSizes() {
         const containerWidth = reelsContainer.clientWidth;
         const gapSize = window.innerWidth <= 480 ? 6 : 10;
-        const paddingSize = window.innerWidth <= 480 ? 16 : 20;
+        const paddingSize = window.innerWidth <= 480 ? 16 : 30;
         const availableWidth = containerWidth - paddingSize - (gapSize * 2);
-        symbolSize = availableWidth / 3;
+        symbolSize = Math.floor(availableWidth / 3);
         return symbolSize;
       }
 
@@ -590,7 +591,7 @@
         reelWrappers.forEach(wrapper => {
           wrapper.style.height = reelHeight + 'px';
           wrapper.style.width = size + 'px';
-          wrapper.style.maxWidth = 'none';
+          wrapper.style.maxWidth = size + 'px';
         });
 
         document.querySelectorAll('.symbol').forEach(sym => {
@@ -601,7 +602,8 @@
       }
 
       function initGame() {
-        calculateSizes();
+        console.log('Initializing game...');
+        
         applySizes();
 
         baseStrips = [
@@ -628,6 +630,8 @@
         clearHighlights();
         updateUI();
         messageDisplay.textContent = '🎰 SPIN THE REELS!';
+        
+        console.log('Game initialized successfully!');
       }
 
       function updateGlobalBalance() {
@@ -639,7 +643,9 @@
       let audioCtx = null;
       function initAudio() {
         if (!audioCtx) {
-          try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+          try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {
+            console.log('Audio not supported');
+          }
         }
       }
       function playTone(freq, dur, type='sine', vol=0.1, delay=0) {
@@ -864,11 +870,16 @@
         increaseBetBtn.disabled = isSpinning;
       }
 
-      // Handle resize
+      // ============ EVENT LISTENERS ============
+      spinButton.addEventListener('click', spinAll);
+      decreaseBetBtn.addEventListener('click', function() { changeBet(-10); });
+      increaseBetBtn.addEventListener('click', function() { changeBet(10); });
+
       window.addEventListener('resize', () => {
-        calculateSizes();
         applySizes();
-        [0,1,2].forEach(i => setPositionInstant(i, currentPositions[i]));
+        if (currentPositions) {
+          [0,1,2].forEach(i => setPositionInstant(i, currentPositions[i]));
+        }
       });
 
       window.addEventListener('keydown', (e) => {
@@ -880,9 +891,11 @@
         }
       });
 
-      // Start game
+      // ============ START GAME ============
+      console.log('DOM loaded, starting game...');
       initGame();
-    })();
+      
+    });
   </script>
 </body>
 </html>
