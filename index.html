@@ -1,3 +1,6 @@
+Вот измененный HTML-код. Новая секция с игрой Судоку добавлена в список проектов в том же стиле, а ссылки в кнопках и документе Privacy Policy настроены в соответствии с предоставленными данными (обратите внимание, что ссылка для RuStore была очищена от префикса `const val MARKET_LINK = `).
+
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -160,7 +163,6 @@
 
     <main class="card">
       <ul>
-        <!-- Extractor -->
         <li class="item">
           <div class="row">
             <div class="info">
@@ -191,7 +193,6 @@
           </div>
         </li>
 
-        <!-- Jigsaw -->
         <li class="item">
           <div class="row">
             <div class="info">
@@ -221,6 +222,36 @@
             </div>
           </div>
         </li>
+
+        <li class="item">
+          <div class="row">
+            <div class="info">
+              <strong>Sudoku Puzzle Classic</strong>
+              <p class="desc">
+                Train your brain with classic sudoku puzzles. Enjoy multiple difficulty levels, daily challenges, and offline play.
+              </p>
+
+              <div class="meta">
+                <a class="policy" href="https://vovnovvalera.github.io/sudoku/policy/index.html" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 3v4a2 2 0 0 0 2 2h4" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Privacy Policy
+                </a>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn" href="https://play.google.com/store/apps/details?id=com.vvv.game.sudoku.puzzle.classic.googleplay" target="_blank" rel="noopener">
+                Open on Google Play →
+              </a>
+              <a class="btn" href="https://apps.rustore.ru/app/com.vvv.game.sudoku.puzzle.classic.rustore" target="_blank" rel="noopener">
+                Open on RuStore →
+              </a>
+            </div>
+          </div>
+        </li>
       </ul>
     </main>
 
@@ -234,3 +265,5 @@
   </script>
 </body>
 </html>
+
+```
