@@ -1,266 +1,505 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Valery Vaunou — Projects</title>
-  <meta name="description" content="Projects by Valery Vaunou." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valery Vaunou — Games & Apps</title>
+<meta name="description" content="Valery Vaunou — indie Android developer. I make games and apps: Jigsaw Puzzles, Sudoku, Millionaire Quiz, ZIP RAR Extractor, PDF Master.">
+<meta property="og:title" content="Valery Vaunou — Games & Apps">
+<meta property="og:description" content="Indie Android developer. Games and apps on Google Play and RuStore.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vovnovvalera.github.io/">
+<meta property="og:image" content="https://vovnovvalera.github.io/assets/icons/jigsaw.png">
+<meta name="theme-color" content="#0d0f17">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff7a59'/%3E%3Cstop offset='1' stop-color='%237c5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M17 18h8l7 20 7-20h8L36 48h-8z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --bg-2:#ecebe6; --surface:#ffffff; --surface-2:#f2f1ed;
+  --text:#15161c; --muted:#5d606b; --faint:#8b8e98; --line:rgba(20,22,30,.10);
+  --accent:#ff6a45; --accent-2:#7c5cff; --accent-soft:rgba(255,106,69,.12);
+  --star:#e8a317; --shadow:0 1px 2px rgba(20,22,30,.06),0 12px 32px -12px rgba(20,22,30,.18);
+  --radius:22px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d0f17; --bg-2:#121522; --surface:#161a28; --surface-2:#1c2132;
+    --text:#eef0f6; --muted:#a3a8b8; --faint:#6f7486; --line:rgba(255,255,255,.08);
+    --accent:#ff7a59; --accent-2:#9b84ff; --accent-soft:rgba(255,122,89,.14);
+    --star:#ffc145; --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d0f17; --bg-2:#121522; --surface:#161a28; --surface-2:#1c2132;
+  --text:#eef0f6; --muted:#a3a8b8; --faint:#6f7486; --line:rgba(255,255,255,.08);
+  --accent:#ff7a59; --accent-2:#9b84ff; --accent-soft:rgba(255,122,89,.14);
+  --star:#ffc145; --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
+}
 
-  <style>
-    :root{
-      --bg:#0b1220;
-      --card:#111a2e;
-      --text:#e8eefc;
-      --muted:#a9b7da;
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --radius:16px;
-      --soft: rgba(255,255,255,.05);
-      --soft2: rgba(255,255,255,.08);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(122,162,255,.22), transparent 55%),
-        radial-gradient(1000px 600px at 80% 20%, rgba(125,255,207,.14), transparent 60%),
-        var(--bg);
-      line-height:1.6;
-    }
-    .wrap{max-width:920px;margin:0 auto;padding:44px 18px 60px}
-    header{
-      display:flex;align-items:baseline;justify-content:space-between;
-      gap:12px;flex-wrap:wrap;margin-bottom:18px
-    }
-    h1{font-size:28px;margin:0;letter-spacing:.2px}
-    .muted{color:var(--muted);font-size:14px;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.1;letter-spacing:-.02em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
 
-    .card{
-      background: rgba(17,26,46,.78);
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 4px);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      backdrop-filter: blur(10px);
-    }
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:700;font-size:18px}
+.logo-mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;font-size:17px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:8px 14px;border-radius:999px;color:var(--muted);font-size:15px;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--text);background:var(--surface-2)}
+.theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);
+  cursor:pointer;display:grid;place-items:center;margin-left:6px}
+.theme-btn svg{width:18px;height:18px}
+@media (max-width:720px){.nav-links a:not(.keep){display:none}}
 
-    ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+/* ---------- hero ---------- */
+.hero{position:relative;padding:96px 0 80px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none}
+.blob.a{width:520px;height:520px;background:var(--accent);top:-180px;right:-120px;opacity:.28}
+.blob.b{width:460px;height:460px;background:var(--accent-2);bottom:-220px;left:-160px;opacity:.25}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--line);font-size:14px;color:var(--muted);box-shadow:var(--shadow)}
+.dot{width:8px;height:8px;border-radius:50%;background:#2ecc71;box-shadow:0 0 0 4px rgba(46,204,113,.18)}
+.hero h1{font-size:clamp(42px,6.4vw,76px);margin:22px 0 20px}
+.grad{background:linear-gradient(100deg,var(--accent) 10%,var(--accent-2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s}
+.btn svg{width:18px;height:18px}
+.btn.primary{background:var(--text);color:var(--bg)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn.ghost{border:1px solid var(--line);background:var(--surface)}
+.btn.ghost:hover{transform:translateY(-2px);border-color:var(--faint)}
 
-    .item{
-      padding:16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: var(--soft);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-    }
-    .item:hover{
-      transform: translateY(-1px);
-      background: var(--soft2);
-      border-color: rgba(255,255,255,.16);
-    }
+.stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:36px;margin-top:48px}
+.stat b{display:block;font-family:"Space Grotesk";font-size:30px;line-height:1}
+.stat span{font-size:13px;color:var(--faint)}
+@media (max-width:600px){.stats{grid-template-columns:repeat(2,1fr);gap:24px}}
 
-    /* NEW: clean layout */
-    .row{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap:14px 18px;
-      align-items:start;
-    }
+.icon-cloud{position:relative;aspect-ratio:1;max-width:420px;width:100%;justify-self:center}
+.icon-cloud .ring{position:absolute;inset:8%;border-radius:50%;border:1px dashed var(--line)}
+.icon-cloud .ring.r2{inset:26%}
+.icon-cloud img{position:absolute;border-radius:24%;box-shadow:var(--shadow);animation:float 6s ease-in-out infinite}
+.icon-cloud img:nth-child(3){width:38%;left:31%;top:31%;animation-delay:0s;z-index:2}
+.icon-cloud img:nth-child(4){width:24%;left:4%;top:12%;animation-delay:-1.2s}
+.icon-cloud img:nth-child(5){width:22%;right:6%;top:4%;animation-delay:-2.4s}
+.icon-cloud img:nth-child(6){width:23%;right:0;bottom:16%;animation-delay:-3.6s}
+.icon-cloud img:nth-child(7){width:21%;left:12%;bottom:4%;animation-delay:-4.8s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+@media (max-width:880px){
+  .hero{padding:64px 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .icon-cloud{max-width:320px;order:-1}
+}
 
-    .info strong{
-      display:block;
-      font-size:15px;
-      margin-bottom:6px;
-      letter-spacing:.1px;
-    }
+/* ---------- sections ---------- */
+section{padding:88px 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.sec-head h2{font-size:clamp(32px,4vw,46px);margin-top:10px}
+.sec-head p{color:var(--muted);max-width:460px}
+@media (max-width:600px){section{padding:64px 0}}
 
-    .desc{
-      color:var(--muted);
-      font-size:14px;
-      margin:0;
-      max-width: 58ch;
-    }
+/* ---------- about ---------- */
+.about{background:var(--bg-2);border-block:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.story p{color:var(--muted);font-size:17px;margin-bottom:18px}
+.story p strong{color:var(--text);font-weight:600}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.value{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.value .ic{font-size:22px;line-height:1}
+.value b{display:block;margin:10px 0 4px;font-size:15px}
+.value span{font-size:14px;color:var(--muted);line-height:1.5;display:block}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(var(--accent),var(--accent-2));border-radius:2px;opacity:.6}
+.step{position:relative;padding-bottom:30px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-28px;top:4px;width:16px;height:16px;border-radius:50%;
+  background:var(--bg-2);border:3px solid var(--accent)}
+.step:nth-child(even)::before{border-color:var(--accent-2)}
+.step .when{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.step h3{font-size:21px;margin:6px 0 6px}
+.step p{color:var(--muted);font-size:15px}
+@media (max-width:880px){.about-grid{grid-template-columns:1fr;gap:48px}}
+@media (max-width:480px){.values{grid-template-columns:1fr}}
 
-    .actions{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:flex-end;
-      min-width: 220px;
-    }
+/* ---------- apps ---------- */
+.filters{display:flex;gap:6px;padding:5px;background:var(--surface);border:1px solid var(--line);border-radius:999px}
+.filters button{border:0;background:none;color:var(--muted);font:600 14px Inter,sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;transition:.2s}
+.filters button.on{background:var(--text);color:var(--bg)}
+.apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+@media (max-width:400px){.apps{grid-template-columns:1fr}}
+.app{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;box-shadow:var(--shadow);transition:transform .25s,border-color .25s}
+.app:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.app.hide{display:none}
+.app-top{display:flex;gap:16px;align-items:center}
+.app-top img{width:76px;height:76px;border-radius:20px;flex:none;box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.app-top h3{font-size:20px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.tag.game{background:var(--accent-soft);color:var(--accent)}
+.tag.tool{background:color-mix(in srgb,var(--accent-2) 15%,transparent);color:var(--accent-2)}
+.app p.desc{color:var(--muted);font-size:15px;margin:18px 0 14px}
+.feats{list-style:none;display:grid;gap:7px;margin-bottom:20px}
+.feats li{position:relative;padding-left:22px;font-size:14px}
+.feats li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:3px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.meta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--faint);margin-bottom:18px;padding-top:16px;border-top:1px solid var(--line)}
+.meta .star{color:var(--star)}
+.meta b{color:var(--text);font-weight:600}
+.stores{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;align-items:center}
+.store{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;font-size:14px;font-weight:600;
+  background:var(--text);color:var(--bg);transition:transform .2s,opacity .2s}
+.store:hover{transform:translateY(-2px)}
+.store.ru{background:var(--surface-2);color:var(--text);border:1px solid var(--line)}
+.store svg{width:16px;height:16px}
+.store.soon{background:none;border:1px dashed var(--line);color:var(--faint);cursor:default}
+.store.soon:hover{transform:none}
+.policy{font-size:13px;color:var(--faint);margin-left:auto;text-decoration:underline;text-underline-offset:3px}
+.policy:hover{color:var(--text)}
 
-    a{color:inherit;text-decoration:none}
+/* ---------- writing / contact ---------- */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.link-card{display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:var(--radius);background:var(--surface);
+  border:1px solid var(--line);transition:transform .25s,border-color .25s}
+.link-card:hover{transform:translateY(-4px);border-color:var(--faint)}
+.link-card .lg{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font:700 20px "Space Grotesk"}
+.link-card h3{font-size:19px}
+.link-card p{color:var(--muted);font-size:14px}
+.link-card .go{margin-top:auto;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
+.link-card:hover .go{color:var(--accent)}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      font-size: 13px;
-      white-space:nowrap;
-      width: 100%;
-      transition: background .12s ease, transform .12s ease, border-color .12s ease;
-    }
-    .btn:hover{
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.20);
-      transform: translateY(-1px);
-    }
+.outro{text-align:center;padding:96px 0}
+.outro h2{font-size:clamp(34px,5vw,58px);max-width:780px;margin:0 auto 18px}
+.outro p{color:var(--muted);max-width:520px;margin:0 auto 32px;font-size:17px}
+.outro .cta{justify-content:center}
 
-    .meta{
-      margin-top:10px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--faint);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a:hover{color:var(--text)}
 
-    .policy{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:13px;
-      color:var(--muted);
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      transition: background .12s ease, border-color .12s ease, color .12s ease;
-    }
-    .policy:hover{
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.18);
-      color: var(--text);
-    }
-    .policy svg{opacity:.9}
-
-    footer{margin-top:16px;color:var(--muted);font-size:13px}
-
-    /* Mobile */
-    @media (max-width: 640px){
-      .row{grid-template-columns: 1fr}
-      .actions{align-items:stretch; min-width: unset}
-      .btn{width:100%}
-      .desc{max-width: unset}
-    }
-  </style>
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .icon-cloud img{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
 </head>
-
 <body>
+
+<header class="nav">
   <div class="wrap">
-    <header>
-      <h1>Projects</h1>
-      <p class="muted">By Valery Vaunou</p>
-    </header>
-
-    <main class="card">
-      <ul>
-        <li class="item">
-          <div class="row">
-            <div class="info">
-              <strong>ZIP RAR Extractor &amp; Archiver</strong>
-              <p class="desc">
-                Open ZIP, RAR and 7Z files from downloads, email and messengers easily.
-              </p>
-
-              <div class="meta">
-                <a class="policy" href="https://vovnovvalera.github.io/extractor/policy/index.html" target="_blank" rel="noopener">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
-                    <path d="M14 3v4a2 2 0 0 0 2 2h4" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                  Privacy Policy
-                </a>
-              </div>
-            </div>
-
-            <div class="actions">
-              <a class="btn" href="https://play.google.com/store/apps/details?id=smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
-                Open on Google Play →
-              </a>
-              <a class="btn" href="https://www.rustore.ru/catalog/app/smart.ai.zip.rar.extractor" target="_blank" rel="noopener">
-                Open on RuStore →
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="item">
-          <div class="row">
-            <div class="info">
-              <strong>Jigsaw Puzzle</strong>
-              <p class="desc">
-                Play jigsaw puzzles offline: daily puzzle, custom photo puzzles, 36–400 pieces.
-              </p>
-
-              <div class="meta">
-                <a class="policy" href="https://vovnovvalera.github.io/jigsaw/policy/index.html" target="_blank" rel="noopener">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
-                    <path d="M14 3v4a2 2 0 0 0 2 2h4" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                  Privacy Policy
-                </a>
-              </div>
-            </div>
-
-            <div class="actions">
-              <a class="btn" href="https://play.google.com/store/apps/details?id=com.vvv.superpuzzlegame" target="_blank" rel="noopener">
-                Open on Google Play →
-              </a>
-              <a class="btn" href="https://www.rustore.ru/catalog/app/com.vvv.superpuzzlegame" target="_blank" rel="noopener">
-                Open on RuStore →
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="item">
-          <div class="row">
-            <div class="info">
-              <strong>Sudoku</strong>
-              <p class="desc">
-                Train your brain with classic sudoku puzzles. Enjoy multiple difficulty levels, daily challenges, and offline play.
-              </p>
-
-              <div class="meta">
-                <a class="policy" href="https://vovnovvalera.github.io/sudoku/policy/index.html" target="_blank" rel="noopener">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
-                    <path d="M14 3v4a2 2 0 0 0 2 2h4" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                  Privacy Policy
-                </a>
-              </div>
-            </div>
-
-            <div class="actions">
-              <a class="btn" href="https://play.google.com/store/apps/details?id=com.vvv.game.sudoku.puzzle.classic" target="_blank" rel="noopener">
-                Open on Google Play →
-              </a>
-              <a class="btn" href="https://apps.rustore.ru/app/com.vvv.game.sudoku.puzzle.classic" target="_blank" rel="noopener">
-                Open on RuStore →
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </main>
-
-    <footer>
-      <span>© <span id="y"></span> Valery Vaunou</span>
-    </footer>
+    <a href="#top" class="logo"><span class="logo-mark">V</span>Valery Vaunou</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#apps" class="keep">Apps</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle color theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
   </div>
+</header>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Indie developer · Vaunou Apps</span>
+      <h1>Hi, I'm Valery.<br>I make <span class="grad">games &amp; apps</span>.</h1>
+      <p class="lead">I'm an Android developer who has been writing code since I was 14. Today I build and ship my own mobile games and tools — from the first sketch to the store page — and they are played by tens of thousands of people.</p>
+      <div class="cta">
+        <a class="btn primary" href="#apps">See my apps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/valery-vaunou/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+          LinkedIn</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>5</b><span>apps released</span></div>
+        <div class="stat"><b>2</b><span>app stores</span></div>
+        <div class="stat"><b>50K+</b><span>downloads</span></div>
+        <div class="stat"><b>14</b><span>age I started coding</span></div>
+      </div>
+    </div>
+    <div class="icon-cloud" aria-hidden="true">
+      <div class="ring"></div><div class="ring r2"></div>
+      <img src="assets/icons/jigsaw.png" alt="">
+      <img src="assets/icons/sudoku.png" alt="">
+      <img src="assets/icons/millionaire.png" alt="">
+      <img src="assets/icons/pdfmaster.png" alt="">
+      <img src="assets/icons/extractor.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="kicker">About me</div><h2>My path</h2></div>
+    </div>
+    <div class="about-grid">
+      <div class="story reveal">
+        <p>I wrote my first program at <strong>14</strong> and never really stopped. It started with a simple question — <em>how do games actually work?</em> — and turned into the thing I love doing most.</p>
+        <p>Today I'm an <strong>Android developer</strong> and I run <strong>Vaunou Apps</strong>, my own small studio. I make <strong>games and apps</strong> end to end: idea, design, code, art direction, store listing, and updates driven by what players tell me.</p>
+        <p>I love the whole loop — building something from nothing, polishing the tiny details nobody notices until they're missing, shipping it, and then watching real people enjoy it.</p>
+        <div class="values">
+          <div class="value"><div class="ic">✈️</div><b>Offline first</b><span>Games and tools that work on a plane, on the subway, anywhere.</span></div>
+          <div class="value"><div class="ic">🔒</div><b>Privacy by default</b><span>Your files are processed on the device and never uploaded.</span></div>
+          <div class="value"><div class="ic">🧘</div><b>Calm, clean UX</b><span>No pressure, no clutter — just the thing you came for.</span></div>
+          <div class="value"><div class="ic">🤝</div><b>Fair to users</b><span>Core features stay free. No paywalls in the middle of your work.</span></div>
+        </div>
+      </div>
+      <div class="timeline reveal">
+        <div class="step"><div class="when">Age 14</div><h3>First lines of code</h3><p>Fell in love with programming — small experiments, little games, and endless "what if I try this?"</p></div>
+        <div class="step"><div class="when">Going mobile</div><h3>Android developer</h3><p>Turned the hobby into a profession and focused on native Android development.</p></div>
+        <div class="step"><div class="when">Vaunou Apps</div><h3>My own apps on Google Play</h3><p>Started shipping my own products: puzzle games first, then useful everyday tools.</p></div>
+        <div class="step"><div class="when">Growing</div><h3>RuStore &amp; new genres</h3><p>Brought the apps to RuStore and expanded into trivia and productivity — a quiz game and a full PDF suite.</p></div>
+        <div class="step"><div class="when">Now</div><h3>50,000+ downloads</h3><p>Jigsaw Puzzles alone passed 50K downloads on Google Play. More games are on the way.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPS ================= -->
+<section id="apps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="kicker">Portfolio</div><h2>Games &amp; apps I've built</h2></div>
+      <div class="filters" role="tablist">
+        <button class="on" data-f="all">All</button>
+        <button data-f="game">Games</button>
+        <button data-f="tool">Apps</button>
+      </div>
+    </div>
+
+    <div class="apps">
+
+      <!-- Jigsaw -->
+      <article class="app reveal" data-cat="game">
+        <div class="app-top">
+          <img src="assets/icons/jigsaw.png" alt="Jigsaw Puzzles icon" loading="lazy">
+          <div><h3>Jigsaw Puzzles: Offline Games</h3><div class="tags"><span class="tag game">Game</span><span class="tag">Puzzle</span></div></div>
+        </div>
+        <p class="desc">Relaxing jigsaw puzzles that work completely offline. No timers, no lives, no pressure — just you and the picture.</p>
+        <ul class="feats">
+          <li>300+ free HD pictures, new ones with every update</li>
+          <li>Six difficulty levels: from 36 to 400 pieces</li>
+          <li>A new daily puzzle and puzzles from your own photos</li>
+        </ul>
+        <div class="meta">
+          <span><span class="star">★</span> <b>4.2</b> Google Play · 508 reviews</span>
+          <span><span class="star">★</span> <b>4.9</b> RuStore</span>
+          <span><b>50K+</b> downloads</span>
+        </div>
+        <div class="stores">
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.vvv.superpuzzlegame" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.8v18.4c0 .7.8 1.1 1.4.7L21 13c.6-.4.6-1.3 0-1.7L5.4 2.1C4.8 1.7 4 2.1 4 2.8z"/></svg>Google Play</a>
+          <a class="store ru" href="https://www.rustore.ru/catalog/app/com.vvv.superpuzzlegame" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>RuStore</a>
+          <a class="policy" href="jigsaw/policy/index.html">Privacy policy</a>
+        </div>
+      </article>
+
+      <!-- Millionaire -->
+      <article class="app reveal" data-cat="game">
+        <div class="app-top">
+          <img src="assets/icons/millionaire.png" alt="Millionaire Quiz icon" loading="lazy">
+          <div><h3>Millionaire: Offline Quiz</h3><div class="tags"><span class="tag game">Game</span><span class="tag">Trivia</span><span class="tag">Russian</span></div></div>
+        </div>
+        <p class="desc">A money-ladder trivia game inspired by the legendary TV show: 15 questions to the top prize, studio lights and that tense pause before every answer.</p>
+        <ul class="feats">
+          <li>1,800+ questions across 16 topics, each with an explanation</li>
+          <li>Three lifelines: 50:50, Phone a Friend, Ask the Audience</li>
+          <li>Classic and timed modes, three difficulty levels, works offline</li>
+        </ul>
+        <div class="meta">
+          <span><span class="star">★</span> <b>5.0</b> RuStore · 75 ratings</span>
+        </div>
+        <div class="stores">
+          <a class="store ru" href="https://www.rustore.ru/catalog/app/com.vvv.game.quiz.puzzle.logic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>RuStore</a>
+        </div>
+      </article>
+
+      <!-- Sudoku -->
+      <article class="app reveal" data-cat="game">
+        <div class="app-top">
+          <img src="assets/icons/sudoku.png" alt="Sudoku icon" loading="lazy">
+          <div><h3>Sudoku – Classic Puzzle</h3><div class="tags"><span class="tag game">Game</span><span class="tag">Logic</span></div></div>
+        </div>
+        <p class="desc">The classic number puzzle to relax and train your brain. Thousands of unique grids that replace paper and pencil — free and offline.</p>
+        <ul class="feats">
+          <li>Six levels: Easy, Medium, Hard, Expert, Insane, Grandmaster</li>
+          <li>Smart notes that update automatically as you solve</li>
+          <li>Duplicate highlighting and hints when you get stuck</li>
+        </ul>
+        <div class="meta">
+          <span>Daily challenges</span><span>Offline play</span>
+        </div>
+        <div class="stores">
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.vvv.game.sudoku.puzzle.classic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.8v18.4c0 .7.8 1.1 1.4.7L21 13c.6-.4.6-1.3 0-1.7L5.4 2.1C4.8 1.7 4 2.1 4 2.8z"/></svg>Google Play</a>
+          <a class="store ru" href="https://www.rustore.ru/catalog/app/com.vvv.game.sudoku.puzzle.classic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>RuStore</a>
+          <a class="policy" href="sudoku/policy/index.html">Privacy policy</a>
+        </div>
+      </article>
+
+      <!-- ZIP RAR -->
+      <article class="app reveal" data-cat="tool">
+        <div class="app-top">
+          <img src="assets/icons/extractor.png" alt="ZIP RAR Extractor icon" loading="lazy">
+          <div><h3>ZIP RAR Extractor &amp; Archiver</h3><div class="tags"><span class="tag tool">App</span><span class="tag">Tools</span></div></div>
+        </div>
+        <p class="desc">Open ZIP, RAR and 7Z archives from downloads, email and messengers. Preview files inside without extracting, and create password-protected archives.</p>
+        <ul class="feats">
+          <li>ZIP, RAR, 7Z, TAR, GZ, BZ2, XZ — including multipart archives</li>
+          <li>Preview photos, PDFs and text right inside an archive</li>
+          <li>AES-256 encryption; files never leave your device</li>
+        </ul>
+        <div class="meta">
+          <span><span class="star">★</span> <b>4.6</b> RuStore</span>
+          <span><b>1K+</b> downloads on Google Play</span>
+        </div>
+        <div class="stores">
+          <a class="store" href="https://play.google.com/store/apps/details?id=smart.ai.zip.rar.extractor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.8v18.4c0 .7.8 1.1 1.4.7L21 13c.6-.4.6-1.3 0-1.7L5.4 2.1C4.8 1.7 4 2.1 4 2.8z"/></svg>Google Play</a>
+          <a class="store ru" href="https://www.rustore.ru/catalog/app/smart.ai.zip.rar.extractor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>RuStore</a>
+          <a class="policy" href="extractor/policy/index.html">Privacy policy</a>
+        </div>
+      </article>
+
+      <!-- PDF Master -->
+      <article class="app reveal" data-cat="tool">
+        <div class="app-top">
+          <img src="assets/icons/pdfmaster.png" alt="PDF Master icon" loading="lazy">
+          <div><h3>PDF Master</h3><div class="tags"><span class="tag tool">App</span><span class="tag">Productivity</span></div></div>
+        </div>
+        <p class="desc">A PDF reader, editor and scanner where every feature is free — no PRO version, no subscription, no trial. All documents are processed on the phone.</p>
+        <ul class="feats">
+          <li>Read, search, bookmark — with a night mode</li>
+          <li>Sign contracts, fill forms, compress and merge PDFs</li>
+          <li>Scan paper with the camera (OCR) and convert PDF to Word</li>
+        </ul>
+        <div class="meta">
+          <span>New · 2026</span><span>All features free</span>
+        </div>
+        <div class="stores">
+          <a class="store ru" href="https://www.rustore.ru/catalog/app/com.vvv.pdf.scanner.reader.manager" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>RuStore</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WRITING / LINKS ================= -->
+<section id="writing" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="kicker">Elsewhere</div><h2>Writing &amp; profiles</h2></div>
+      <p>I share what I learn about Android development and indie publishing.</p>
+    </div>
+    <div class="links">
+      <a class="link-card reveal" href="https://medium.com/@vovnovvalera" target="_blank" rel="noopener">
+        <span class="lg" style="background:#111">M</span>
+        <h3>Medium</h3><p>Articles about mobile development, tools and lessons from shipping apps.</p>
+        <span class="go">Read on Medium →</span>
+      </a>
+      <a class="link-card reveal" href="https://habr.com/ru/users/kadet-pro/" target="_blank" rel="noopener">
+        <span class="lg" style="background:#5f8eb4">H</span>
+        <h3>Habr</h3><p>My profile on the largest Russian-speaking tech community.</p>
+        <span class="go">Open Habr →</span>
+      </a>
+      <a class="link-card reveal" href="https://play.google.com/store/apps/dev?id=5305496232232086613" target="_blank" rel="noopener">
+        <span class="lg" style="background:linear-gradient(135deg,#00c4ff,#00e07a 50%,#ffce00)">▶</span>
+        <h3>Google Play</h3><p>All Vaunou Apps titles on the Google Play Store.</p>
+        <span class="go">Developer page →</span>
+      </a>
+      <a class="link-card reveal" href="https://www.rustore.ru/catalog/developer/3dls0y" target="_blank" rel="noopener">
+        <span class="lg" style="background:#0077ff">R</span>
+        <h3>RuStore</h3><p>Every one of my games and apps on RuStore.</p>
+        <span class="go">Developer page →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="outro" id="contact">
+  <div class="wrap reveal">
+    <div class="kicker">Contact</div>
+    <h2 style="margin-top:12px">Got an idea, feedback or an offer? <span class="grad">Let's talk.</span></h2>
+    <p>The fastest way to reach me is LinkedIn. I read every message — and every review of my apps.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/valery-vaunou/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+        Message me on LinkedIn</a>
+      <a class="btn ghost" href="https://medium.com/@vovnovvalera" target="_blank" rel="noopener">Medium</a>
+      <a class="btn ghost" href="https://habr.com/ru/users/kadet-pro/" target="_blank" rel="noopener">Habr</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Valery Vaunou · Vaunou Apps</span>
+    <span><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+// theme toggle (remembered per browser)
+(function(){
+  var root=document.documentElement, KEY="theme";
+  try{var saved=localStorage.getItem(KEY); if(saved) root.setAttribute("data-theme",saved);}catch(e){}
+  document.getElementById("themeBtn").addEventListener("click",function(){
+    var cur=root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    var next=cur==="dark"?"light":"dark";
+    root.setAttribute("data-theme",next);
+    try{localStorage.setItem(KEY,next);}catch(e){}
+  });
+})();
+
+// app filters
+document.querySelectorAll(".filters button").forEach(function(b){
+  b.addEventListener("click",function(){
+    document.querySelectorAll(".filters button").forEach(function(x){x.classList.toggle("on",x===b)});
+    var f=b.dataset.f;
+    document.querySelectorAll(".app").forEach(function(a){a.classList.toggle("hide",f!=="all"&&a.dataset.cat!==f)});
+  });
+});
+
+// reveal on scroll
+(function(){
+  var els=document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
-
-```
